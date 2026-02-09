@@ -1,0 +1,155 @@
+@startuml
+title API Ventas - Cadena de Supermercados (Modelo de Dominio)
+
+' =========================
+' PAQUETE DTOs
+' =========================
+package "DTOs (exposición)" {
+
+  class VentaDTO <<DTO>> {
+    -Long id
+    -LocalDate fecha
+    -Long sucursalId
+    -EstadoVenta estado
+    -List<DetalleVentaDTO> detalle
+    -BigDecimal total
+  }
+
+  class SucursalDTO <<DTO>> {
+    -Long id
+    -String nombre
+    -String direccion
+  }
+
+  class ProductoDTO <<DTO>> {
+    -Long id
+    -String nombre
+    -String categoria
+    -BigDecimal precio
+  }
+
+  class DetalleVentaDTO <<DTO>> {
+    -Long productoId
+    -String productoNombre
+    -Integer cantidad
+    -BigDecimal precioUnitario
+    -BigDecimal subtotal
+  }
+
+}
+
+' =========================
+' PAQUETE ENUMS
+' =========================
+package "Enums" {
+
+  enum EstadoVenta {
+    REGISTRADA
+    ANULADA
+  }
+}
+
+' =========================
+' CLASES DE DOMINIO
+' =========================
+
+class Sucursal {
+  -Long id
+  -String nombre
+  -String direccion
+  -String telefono
+  -LocalDate creadoEn
+  -LocalDate actualizadoEn
+  --
+  +getId()
+  +getNombre()
+  +onCreate()
+  +onUpdate
+}
+
+class Venta {
+  -Long id
+  -LocalDate fecha
+  -EstadoVenta estado
+  -Boolean borradoLogico
+  -LocalDate creadoEn
+  -LocalDate actualizadoEn
+  --
+  +getId()
+  +getFecha()
+  +anular()
+  +total(): BigDecimal
+  +onCreate()
+  +onUpdate()
+}
+
+class Producto {
+  -Long id
+  -String nombre
+  -String categoria
+  -BigDecimal precioActual
+  -Integer stock
+  -LocalDate creadoEn
+  -LocalDate actualizadoEn
+  --
+  +getId()
+  +getNombre()
+  +onCreate()
+  +onUpdate()
+}
+
+class DetalleVenta {
+  -Long id
+  -Integer cantidad
+  -BigDecimal precioUnitario  ' precio del producto al momento de la venta
+  -LocalDate creadoEn
+  -LocalDate actualizadoEn
+  --
+  +subtotal(): BigDecimal
+  +onCreate()
+  +onUpdate()
+}
+
+class EstadisticasService <<service>> {
+  +productoMasVendido(fecha?: LocalDate, sucursalId?: Long): Producto
+}
+
+' =========================
+' RELACIONES ENTRE ENTIDADES
+' =========================
+
+Sucursal "1" o-- "0..*" Venta : tiene
+Venta "1" *-- "*" DetalleVenta : contiene
+Producto "1" o-- "0..*" DetalleVenta : aparece en
+
+EstadisticasService ..> Venta : usa
+EstadisticasService ..> Producto : retorna
+EstadisticasService ..> DetalleVenta : agrega / cuenta
+
+' =========================
+' RELACIONES DTO <-> DOMINIO
+' =========================
+
+VentaDTO ..> Venta : mapea
+SucursalDTO ..> Sucursal : mapea
+ProductoDTO ..> Producto : mapea
+DetalleVentaDTO ..> DetalleVenta : mapea
+
+' =========================
+' NOTAS
+' =========================
+
+note right of Venta
+  - Una venta pertenece a una única sucursal  
+  - Las ventas pueden anularse (estado = ANULADA)  
+  - Se recomienda borrado lógico (borradoLogico = true)  
+  - No se modifican ventas sin permiso especial
+end note
+
+note right of DetalleVenta
+  - Guarda precioUnitario para no depender de  
+    cambios futuros en el precio del Producto  
+  - subtotal = cantidad * precioUnitario
+end note
+
+@enduml

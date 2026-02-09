@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-AppsupermercadoApplication<appsupermercado>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.tecsuper.appsupermercado.AppsupermercadoApplication",
+      "projectName": "appsupermercado",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}
