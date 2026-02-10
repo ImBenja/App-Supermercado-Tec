@@ -1,0 +1,533 @@
+{
+  "info": {
+    "_postman_id": "7d6e76f0-b46b-4198-b02e-a6c3ca38c916",
+    "name": "Prueba Tecnica - Supermercado",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "CREAR SUCURSALES",
+      "id": "8dde31f1-bcd0-4223-8b24-ff6161da7d7e",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nombre\": \"Lo de Benja\",\r\n    \"direccion\": \"Av. Liniers 3255\",\r\n    \"telefono\": \"11-3563-5643\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8080/api/sucursales",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "sucursales"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "CREAR PRODUCTOS",
+      "id": "1988ec11-1ca7-484b-b247-c2e7354d278d",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nombre\": \"PC Gamer\",\r\n    \"categoria\": \"Tecnologia\",\r\n    \"precio\": 250000,\r\n    \"stock\": 103\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8080/api/productos",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "productos"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "CREAR VENTAS",
+      "id": "e65e5138-350f-4899-a57b-352c0076d049",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"fecha\": \"2025-12-25\",\r\n    \"estadoVenta\": \"REGISTRADA\",\r\n    \"sucursalId\": 3,\r\n    \"detalle\": [\r\n        {\r\n            \"productoId\": 2,\r\n            \"cantidad\": 5\r\n        }\r\n    ]\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8080/api/ventas",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "ventas"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "TRAER PRODUCTOS",
+      "id": "e2718af7-827e-487a-af69-39ad1b93dbb0",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nombre\": \"chupapito\",\r\n    \"direccion\": \"gorod\",\r\n    \"telefono\": \"22344124\"\r\n}"
+        },
+        "url": {
+          "raw": "localhost:8080/api/productos",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "productos"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "TRAER SUCURSALES",
+      "id": "5357d3db-8e96-4356-b8af-db74f4780d2b",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nombre\": \"Manzana\",\r\n    \"categoria\": \"Frutas\",\r\n    \"precio\": 500.0,\r\n    \"stock\": 20\r\n}"
+        },
+        "url": {
+          "raw": "localhost:8080/api/sucursales",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "sucursales"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "TRAER VENTAS",
+      "id": "1c49797d-7b6f-4c61-9030-53dd7237d43d",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"fecha\": \"2025-11-25\",\r\n    \"sucursalId\": 1,\r\n    \"detalle\": [\r\n        {\r\n            \"productoId\": 1,\r\n            \"productoNombre\": \"Naranja\",\r\n            \"cantidad\": 5,\r\n            \"precioUnitario\": 500.0\r\n        },\r\n        {\r\n            \"productoId\": 2,\r\n            \"productoNombre\": \"Manzana\",\r\n            \"cantidad\": 15,\r\n            \"precioUnitario\": 600\r\n        }\r\n    ]\r\n}"
+        },
+        "url": {
+          "raw": "localhost:8080/api/ventas",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "ventas"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "TRAER VENTA/S POR ESTADO",
+      "id": "1f75b6c8-5870-4a8c-a272-ec1cf4d8343b",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"fecha\": \"2025-11-25\",\r\n    \"sucursalId\": 1,\r\n    \"detalle\": [\r\n        {\r\n            \"productoId\": 1,\r\n            \"productoNombre\": \"Naranja\",\r\n            \"cantidad\": 5,\r\n            \"precioUnitario\": 500.0\r\n        },\r\n        {\r\n            \"productoId\": 2,\r\n            \"productoNombre\": \"Manzana\",\r\n            \"cantidad\": 15,\r\n            \"precioUnitario\": 600\r\n        }\r\n    ]\r\n}"
+        },
+        "url": {
+          "raw": "localhost:8080/api/ventas/estado/REGISTRADA",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "ventas", "estado", "REGISTRADA"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "TRAER VENTA/S POR FECHA",
+      "id": "1ee27009-4ec3-49af-a749-dfbc6d93f594",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"fecha\": \"2025-11-25\",\r\n    \"sucursalId\": 1,\r\n    \"detalle\": [\r\n        {\r\n            \"productoId\": 1,\r\n            \"productoNombre\": \"Naranja\",\r\n            \"cantidad\": 5,\r\n            \"precioUnitario\": 500.0\r\n        },\r\n        {\r\n            \"productoId\": 2,\r\n            \"productoNombre\": \"Manzana\",\r\n            \"cantidad\": 15,\r\n            \"precioUnitario\": 600\r\n        }\r\n    ]\r\n}"
+        },
+        "url": {
+          "raw": "localhost:8080/api/ventas/fecha/2025-12-25",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "ventas", "fecha", "2025-12-25"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "TRAER VENTA/S DE UNA SUCURSAL POR FECHA",
+      "id": "df5f2e22-3cb1-42c4-b3bb-c40e57d02850",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"fecha\": \"2025-11-25\",\r\n    \"sucursalId\": 1,\r\n    \"detalle\": [\r\n        {\r\n            \"productoId\": 1,\r\n            \"productoNombre\": \"Naranja\",\r\n            \"cantidad\": 5,\r\n            \"precioUnitario\": 500.0\r\n        },\r\n        {\r\n            \"productoId\": 2,\r\n            \"productoNombre\": \"Manzana\",\r\n            \"cantidad\": 15,\r\n            \"precioUnitario\": 600\r\n        }\r\n    ]\r\n}"
+        },
+        "url": {
+          "raw": "localhost:8080/api/ventas?id=2&fecha=2026-12-25",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "ventas"],
+          "query": [
+            {
+              "key": "id",
+              "value": "2"
+            },
+            {
+              "key": "fecha",
+              "value": "2026-12-25"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "TRAER VENTAS POR SUCURSAL",
+      "id": "3b0235cc-1604-45c0-9551-9de5d6614ded",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/api/ventas/sucursal/2",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "ventas", "sucursal", "2"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "TRAER SUCURSAL/ES POR NOMBRE",
+      "id": "764ee72a-1e8a-493b-bfa7-5e30ed79d59e",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nombre\": \"Manzana\",\r\n    \"categoria\": \"Frutas\",\r\n    \"precio\": 500.0,\r\n    \"stock\": 20\r\n}"
+        },
+        "url": {
+          "raw": "localhost:8080/api/sucursales/nombre/tecnologia claudio",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "sucursales", "nombre", "tecnologia claudio"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "TRAER SUCURSAL/S POR DIRECCION",
+      "id": "596ffde3-4f36-41c6-a188-5a66333225f4",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"fecha\": \"2025-11-25\",\r\n    \"sucursalId\": 1,\r\n    \"detalle\": [\r\n        {\r\n            \"productoId\": 1,\r\n            \"productoNombre\": \"Naranja\",\r\n            \"cantidad\": 5,\r\n            \"precioUnitario\": 500.0\r\n        },\r\n        {\r\n            \"productoId\": 2,\r\n            \"productoNombre\": \"Manzana\",\r\n            \"cantidad\": 15,\r\n            \"precioUnitario\": 600\r\n        }\r\n    ]\r\n}"
+        },
+        "url": {
+          "raw": "localhost:8080/api/sucursales/direccion/Av. Colon 245",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "sucursales", "direccion", "Av. Colon 245"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "TRAER PRODUCTO/S POR NOMBRE",
+      "id": "4c807375-13d6-45ee-9934-002de7f9e594",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nombre\": \"Manzana\",\r\n    \"categoria\": \"Frutas\",\r\n    \"precio\": 500.0,\r\n    \"stock\": 20\r\n}"
+        },
+        "url": {
+          "raw": "localhost:8080/api/productos/nombre/PC gamer",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "productos", "nombre", "PC gamer"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "TRAER PRODUCTOS/S POR CATEGORIA",
+      "id": "f695caaf-e590-409c-b42c-53974b4faff2",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nombre\": \"Manzana\",\r\n    \"categoria\": \"Frutas\",\r\n    \"precio\": 500.0,\r\n    \"stock\": 20\r\n}"
+        },
+        "url": {
+          "raw": "localhost:8080/api/productos/categoria/Tecnologia",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "productos", "categoria", "Tecnologia"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "TRAER PRODUCTO/S POR PRECIO",
+      "id": "e0623d81-67ee-4f11-949d-363b6e04b867",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nombre\": \"Manzana\",\r\n    \"categoria\": \"Frutas\",\r\n    \"precio\": 500.0,\r\n    \"stock\": 20\r\n}"
+        },
+        "url": {
+          "raw": "localhost:8080/api/productos/precio/50000",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "productos", "precio", "50000"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "MODIFICAR PRODUCTO POR ID",
+      "id": "0c28e1e9-11d4-4a9d-88d8-dcda3c0c6f42",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nombre\": \"Naranja\",\r\n    \"categoria\": \"Frutas\",\r\n    \"precio\": 500.0,\r\n    \"stock\": 10\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8080/api/productos/1",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "productos", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "MODIFICAR SUCARSAL POR ID",
+      "id": "f965adb3-c0ce-4d00-86ed-9a37746c9c8a",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nombre\": \"Verduleria\",\r\n    \"direccion\": \"Calabria 2423\",\r\n    \"telefono\": \"223-35-2453\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8080/api/sucursales/1",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "sucursales", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "MODIFICAR VENTA POR ID",
+      "id": "3b73c704-a41e-4822-b86e-b9f75bd826ec",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"fecha\": \"2025-09-20\"\r\n    \r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8080/api/ventas/1",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "ventas", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "DESHABILITAR PRODUCTO",
+      "id": "9f8d9cf2-f88b-4e10-b8f8-4d9e9e485bc6",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/api/productos/deshabilitar/3",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "productos", "deshabilitar", "3"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "DESHABILITAR SUCURSAL",
+      "id": "da094785-c03d-474c-9363-297107e9eb70",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/api/sucursales/deshabilitar/2",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "sucursales", "deshabilitar", "2"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "HABILITAR PRODUCTO",
+      "id": "417fa009-fad7-49e2-82bb-d3055421b835",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/api/productos/habilitar/3",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "productos", "habilitar", "3"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "HABILITAR SUCURSAL",
+      "id": "eb0e3220-08ec-4310-83bf-67221b0fedac",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/api/sucursales/habilitar/5",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "sucursales", "habilitar", "5"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "ELIMINAR PRODUCTOS POR ID",
+      "id": "d7ad7ac7-6f4e-4688-97c1-1a3243af5f89",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/api/productos/3",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "productos", "3"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "ANULAR VENTA POR ID",
+      "id": "97bcc990-eb38-49cb-bbb2-c917fe147a92",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"fecha\": \"2025-11-25\",\r\n    \"sucursalId\": 1,\r\n    \"detalle\": [\r\n        {\r\n            \"productoId\": 1,\r\n            \"productoNombre\": \"Naranja\",\r\n            \"cantidad\": 5,\r\n            \"precioUnitario\": 500.0\r\n        },\r\n        {\r\n            \"productoId\": 2,\r\n            \"productoNombre\": \"Manzana\",\r\n            \"cantidad\": 15,\r\n            \"precioUnitario\": 600\r\n        }\r\n    ]\r\n}"
+        },
+        "url": {
+          "raw": "localhost:8080/api/ventas/1",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "ventas", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "ELIMINAR SUCURSAL POR ID",
+      "id": "00f90d15-5fc8-4cec-abad-2edb4be833e6",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"fecha\": \"2025-11-25\",\r\n    \"sucursalId\": 1,\r\n    \"detalle\": [\r\n        {\r\n            \"productoId\": 1,\r\n            \"productoNombre\": \"Naranja\",\r\n            \"cantidad\": 5,\r\n            \"precioUnitario\": 500.0\r\n        },\r\n        {\r\n            \"productoId\": 2,\r\n            \"productoNombre\": \"Manzana\",\r\n            \"cantidad\": 15,\r\n            \"precioUnitario\": 600\r\n        }\r\n    ]\r\n}"
+        },
+        "url": {
+          "raw": "localhost:8080/api/sucursales/2",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "sucursales", "2"]
+        }
+      },
+      "response": []
+    }
+  ]
+}
